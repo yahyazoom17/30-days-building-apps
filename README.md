@@ -9,3 +9,4 @@
 ### Day 7 - [Quote Board](https://github.com/yahyazoom17/30-days-building-apps/tree/main/quote-board)
 ### Day 8 - [MongoDB](https://github.com/yahyazoom17/30-days-building-apps/tree/main/mongo-db)
 ### Day 9 - [Landing Page Generator](https://github.com/yahyazoom17/30-days-building-apps/tree/main/ai-landing-page)
+### Day 10 - [Landing Page Generator](https://github.com/yahyazoom17/30-days-building-apps/tree/main/color-palette)
