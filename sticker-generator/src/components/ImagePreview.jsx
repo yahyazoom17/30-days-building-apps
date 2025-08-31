@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import toast from "react-hot-toast";
 
 const ImagePreview = ({ image, error }) => {
   if (error) {
@@ -13,6 +14,10 @@ const ImagePreview = ({ image, error }) => {
     );
   }
 
+  const handleDownload = () => {
+    toast.success("Sticker downloaded successfully!");
+  };
+
   return (
     <div className="bg-white border rounded-2xl p-4 shadow-sm mt-20 border-gray-200">
       <img
@@ -24,6 +29,7 @@ const ImagePreview = ({ image, error }) => {
         <a
           href={image}
           download="sticker.png"
+          onClick={handleDownload}
           className="inline-flex justify-center items-center gap-2 px-3 py-2 text-sm border border-gray-200 rounded-xl"
         >
           <Download />

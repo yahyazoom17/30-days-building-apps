@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const Studio = () => {
@@ -57,24 +58,47 @@ const Studio = () => {
   const renderTree = (node, depth = 0) => {
     if (typeof node === "string") {
       return (
-        <div className={`pl-${depth * 4} flex items-center gap-2 my-1`}>
+        <motion.div
+          initial={{ opacity: 0, y: -5 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 1.3,
+          }}
+          className={`pl-${depth * 4} flex items-center gap-2 my-1 mx-${depth}`}
+        >
           <span>📄</span>
           <span className="font-medium">{node}</span>
-        </div>
+        </motion.div>
       );
     }
     return Object.entries(node).map(([folder, children], i) => (
-      <div key={i} className={`pl-${depth * 4} border-l border-white/20 ml-2`}>
-        <div className="flex items-center gap-2 my-1 mx-2">
+      <motion.div
+        initial={{ opacity: 0, x: 10 }}
+        animate={{
+          opacity: 1,
+          x: 0,
+        }}
+        transition={{
+          duration: 0.9,
+          delay: 1.8,
+        }}
+        key={i}
+        className={`pl-${depth * 4} border-l border-white/20 ml-2`}
+      >
+        <motion.div className="flex items-center gap-2 my-1 mx-2">
           <span>📂</span>
           <span className="font-semibold">{folder}</span>
-        </div>
-        <div className="ml-4 border-l border-white/20 my-1 mx-2">
+        </motion.div>
+        <motion.div className=" border-l border-white/20 my-1 mx-4">
           {children.map((child, i) => (
-            <div key={i}>{renderTree(child, depth + 1)}</div>
+            <div key={i}>{renderTree(child, depth + 2)}</div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     ));
   };
 
@@ -97,16 +121,63 @@ const Studio = () => {
         </button>
       </div>
       {sitemap.length > 0 && (
-        <div className="mt-20 max-w-2xl mx-auto flex flex-col items-center">
-          <h3 className="font-bold text-2xl">🗺️Generated Sitemap</h3>
-          <div className="py-6 bg-white/10 mt-5 px-15 rounded-lg">
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.9,
+          }}
+          className="mt-20 max-w-2xl mx-auto flex flex-col items-center"
+        >
+          <motion.h3
+            initial={{ opacity: 0, y: -15 }}
+            animate={{
+              opacity: 1,
+              y: 10,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 0.5,
+            }}
+            className="font-bold text-2xl"
+          >
+            🗺️ Generated Sitemap
+          </motion.h3>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{
+              opacity: 1,
+              y: 15,
+            }}
+            transition={{
+              duration: 0.9,
+              delay: 1,
+            }}
+            className="py-6 bg-white/10 mt-5 px-15 rounded-lg"
+          >
             <ul className="list-disc list-inside text-white/90">
               {sitemap.map((node, i) => (
-                <div key={i}>{renderTree(node)}</div>
+                <motion.div
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{
+                    opacity: 1,
+                    y: -5,
+                  }}
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.5,
+                  }}
+                  key={i}
+                >
+                  {renderTree(node)}
+                </motion.div>
               ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
     </div>
   );
