@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer components {
+  .btn {
+    @apply bg-white/10 text-white rounded-2xl p-4 text-lg font-semibold hover:bg-white/20 transition-all active:scale-95;
+  }
+
+  .btn.ai {
+    @apply bg-white/10 text-white rounded-2xl p-3 text-sm font-medium hover:bg-white/20 transition-all active:scale-95;
+  }
+
+  .btn.danger {
+    @apply text-rose-400;
+  }
+
+  .btn.equals {
+    @apply bg-gradient-to-br from-purple-500 to-indigo-500 font-black shadow-lg;
+  }
+}
